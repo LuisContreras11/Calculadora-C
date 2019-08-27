@@ -19,6 +19,12 @@ namespace Calculadora
         {
             InitializeComponent();
         }
+        Clases.ClsSuma1 obj = new Clases.ClsSuma1();
+        Clases.ClsResta obj2 = new Clases.ClsResta();
+        Clases.ClsDivision obj3 = new Clases.ClsDivision();
+        Clases.ClsMultiplicacion obj4 = new Clases.ClsMultiplicacion();
+        Clases.ClsPorcentaje obj5 = new Clases.ClsPorcentaje();
+
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -114,6 +120,57 @@ namespace Calculadora
             operador = "%";
             primero = double.Parse(Screen.Text);
             Screen.Clear();
+        }
+
+        private void Igual_Click(object sender, EventArgs e)
+        {
+            segundo = double.Parse(Screen.Text);
+
+            double Suma;
+            double Resta;
+            double Div;
+            double Porc;
+            double Mult;
+            switch(operador)
+            {
+                case "+":
+                    Suma = obj.Sumar((primero), (segundo));
+                    Screen.Text = Suma.ToString();
+                    break;
+                case "-":
+                    Resta = obj2.Restar((primero), (segundo));
+                    Screen.Text = Resta.ToString();
+                    break;
+                case "/":
+                    Div = obj3.Dividir((primero), (segundo));
+                    Screen.Text = Div.ToString();
+                    break;
+                case "*":
+                    Mult = obj4.Multiplicar((primero), (segundo));
+                    Screen.Text = Mult.ToString();
+                    break;
+                case "%":
+                    Porc = obj5.Porcentaje((primero), (segundo));
+                    Screen.Text = Porc.ToString();
+                    break;
+            }
+        }
+
+        private void BtnCE_Click(object sender, EventArgs e)
+        {
+            Screen.Clear();
+        }
+
+        private void BtnC_Click(object sender, EventArgs e)
+        {
+            if(Screen.Text.Length==1)
+            {
+                Screen.Text = "";
+            }
+            else
+            {
+                Screen.Text = Screen.Text.Substring(0, Screen.Text.Length - 1);
+            }
         }
     }
 }
